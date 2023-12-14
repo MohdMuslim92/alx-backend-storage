@@ -1,6 +1,10 @@
 -- Script to list Glam rock bands ranked by longevity until 2022
 
-SELECT band_name AS band_name, IFNULL(split, 2020) - IFNULL(formed, 0) AS lifespan
+SELECT band_name,
+    CASE
+        WHEN formed = 0 OR split = 0 THEN 0
+        ELSE 2022 - GREATEST(formed, split)
+    END AS lifespan
 FROM metal_bands
 WHERE style LIKE '%Glam rock%'
-ORDER BY lifespan DESC;
+ORDER BY lifespan DESC, band_name;
