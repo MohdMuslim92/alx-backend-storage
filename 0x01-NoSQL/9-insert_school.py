@@ -3,6 +3,7 @@
 Module to interact with MongoDB collections.
 """
 
+
 def insert_school(mongo_collection, **kwargs):
     """
     Inserts a new document into a MongoDB collection based on keyword
